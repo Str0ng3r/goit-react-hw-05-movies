@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Outlet } from "react-router-dom";
+import styled from './styled.module.css'
 
 export const Film = () => {
   const { productId } = useParams();
@@ -23,19 +24,14 @@ export const Film = () => {
 
   return (
     infoFilm && (
-      <div className="container" style={{ display: 'flex', flexDirection: 'column' }}>
+      <div className={styled.containerWrapFilm}>
         <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}
+className={styled.containerFilm}
         >
           <img
             src={`https://image.tmdb.org/t/p/w400${infoFilm.backdrop_path}`}
             alt="img-film"
-            style={{ width: '1000px' }}
+           className={styled.imgFilm}
           />
           <div>
             <h1>{infoFilm.original_title}</h1>
@@ -49,7 +45,8 @@ export const Film = () => {
           </div>
         </div>
         <footer style={{ display: 'flex', justifyContent: 'center' }}>
-          <Link to={`${productId}`}>Actors</Link>
+        <Link to={`reviews/${productId}`}>Reviews</Link>
+          <Link to={`actors/${productId}`}>Actors</Link>
         </footer>
         <Outlet/>
       </div>

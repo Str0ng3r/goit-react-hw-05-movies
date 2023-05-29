@@ -1,5 +1,6 @@
 import React, { useState} from 'react';
 import { Link } from 'react-router-dom';
+import styled from './styled.module.css'
 export const Movies = () => {
     const [search,setSearch] = useState('')
 const [films,setFilms] = useState(null)
@@ -15,13 +16,12 @@ const [films,setFilms] = useState(null)
 
 
 return (
-    <main>
-        <div><input type="text" onChange={(evt)=> {setSearch(evt.target.value)}}/><button onClick={()=> {
+    <main className={styled.main}>
+        <div className={styled.divInput}><input className={styled.input} type="text" onChange={(evt)=> {setSearch(evt.target.value)}}/><button onClick={()=> {
                   fetch(`https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=en-US&page=1`, options)
                   .then(response => response.json())
                   .then(response => setFilms(response.results))
-                  .catch(err => console.error(err));
-            console.log(films)}}>search</button>
+                  .catch(err => console.error(err));}}>search</button>
 
 <ul>
 {films && films.map(item => (

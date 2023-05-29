@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
+import styled from './styled.module.css'
 export const Trending = () => {
   const [films, setFilms] = useState(null);
 
@@ -20,7 +20,7 @@ export const Trending = () => {
   }, []);
 
   return (
-    <div style={{display:'flex',justifyContent:'flex-start',width:'100vw',flexDirection:'column',}}>
+    <div className={styled.trendingCont}>
       <h1>Trending films</h1>
       <ul>
 
