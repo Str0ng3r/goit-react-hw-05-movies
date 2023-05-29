@@ -1,7 +1,7 @@
 import React, { useState,useEffect} from 'react';
 import { useParams } from "react-router-dom";
 import styled from './styled.module.css'
-export const Actors = () => {
+ const Actors = () => {
     const { actorsId } = useParams();
     const [actorsData, setActorsData] = useState(null);
   
@@ -44,3 +44,4 @@ export const Actors = () => {
       </div>
     );
   };
+  export default Actors

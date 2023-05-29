@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { Outlet } from "react-router-dom";
 import styled from './styled.module.css'
 
-export const Film = () => {
+ const Film = () => {
   const { productId } = useParams();
   const [infoFilm, setInfoFilm] = useState(null);
 
@@ -53,3 +53,4 @@ className={styled.containerFilm}
     )
   );
 };
+export default Film

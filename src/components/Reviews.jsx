@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-export const Review = () => {
+ const Review = () => {
   const [reviews, setReviews] = useState(null);
   const { reviewsId } = useParams(); // Change 'reviewId' to 'reviewsId'
 
@@ -31,3 +31,4 @@ export const Review = () => {
     </div>
   );
 };
+export default Review
