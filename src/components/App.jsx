@@ -38,9 +38,9 @@ const Review = lazy(()=> import('./Reviews'))
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
 
-        <Route path='/film/:productId' element={<Film></Film>}>
-<Route path='actors/:actorsId' element={<Actors></Actors>}></Route>
-<Route path='reviews/:reviewsId' element={<Review></Review>}></Route>
+        <Route path='/movies/:productId' element={<Film></Film>}>
+<Route path='/movies/:productId/cast' element={<Actors></Actors>}></Route>
+<Route path='/movies/:productId/reviews' element={<Review></Review>}></Route>
         </Route>
       </Routes>
       </Suspense>

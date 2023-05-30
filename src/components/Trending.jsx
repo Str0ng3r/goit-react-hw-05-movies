@@ -13,7 +13,7 @@ export const Trending = () => {
       }
     };
     
-    fetch('https://api.themoviedb.org/3/trending/all/day?language=en-US', options)
+    fetch('https://api.themoviedb.org/3/trending/movie/day?language=en-US', options)
       .then(response => response.json())
       .then(response => setFilms(response.results))
       .catch(err => console.error(err));
@@ -27,7 +27,7 @@ export const Trending = () => {
       {films &&
   films.map(item => (
     <li key={item.id}>
-      <Link to={`/film/${item.id}`}>
+      <Link to={`/movies/${item.id}`}>
   {item.original_title}
 </Link>
     </li>

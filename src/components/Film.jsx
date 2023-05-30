@@ -45,8 +45,8 @@ className={styled.containerFilm}
           </div>
         </div>
         <footer style={{ display: 'flex', justifyContent: 'center' }}>
-        <Link to={`reviews/${productId}`}>Reviews</Link>
-          <Link to={`actors/${productId}`}>Actors</Link>
+        <Link to={`/movies/${productId}/reviews`}>Reviews</Link>
+          <Link to={`/movies/${productId}/cast`}>Actors</Link>
         </footer>
         <Outlet/>
       </div>
