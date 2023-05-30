@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import styled from './styled.module.css'
 export const Header = () => {
     return (
-        <main>
+        <section>
         <header className={styled.header}>
 <nav>
     <Link className={styled.headerLink} to='/'>Home</Link>
@@ -11,6 +11,6 @@ export const Header = () => {
 </nav>
         </header>
         <Outlet></Outlet>
-       </main>
+        </section>
     )
 }
