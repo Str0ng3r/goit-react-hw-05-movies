@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
  const Review = () => {
   const [reviews, setReviews] = useState(null);
-  const { reviewsId } = useParams(); // Change 'reviewId' to 'reviewsId'
+  const { productId } = useParams(); // Change 'reviewId' to 'reviewsId'
 
   useEffect(() => {
     const options = {
@@ -14,11 +14,11 @@ import { useParams } from 'react-router-dom';
       },
     };
 
-    fetch(`https://api.themoviedb.org/3/movie/${reviewsId}/reviews?language=en-US&page=1`, options)
+    fetch(`https://api.themoviedb.org/3/movie/${productId}/reviews?language=en-US&page=1`, options)
       .then(response => response.json())
       .then(response => response.results.length > 0 ? setReviews(response.results) : setReviews(null))
       .catch(err => console.error(err));
-  }, [reviewsId]);
+  }, [productId]);
 
   return (
     <div>

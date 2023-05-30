@@ -2,7 +2,7 @@ import React, { useState,useEffect} from 'react';
 import { useParams } from "react-router-dom";
 import styled from './styled.module.css'
  const Actors = () => {
-    const { castId } = useParams();
+    const { productId } = useParams();
     const [actorsData, setActorsData] = useState(null);
   
     useEffect(() => {
@@ -14,11 +14,11 @@ import styled from './styled.module.css'
         }
       };
   
-      fetch(`https://api.themoviedb.org/3/movie/${castId}/credits?language=en-US`, options)
+      fetch(`https://api.themoviedb.org/3/movie/${productId}/credits?language=en-US`, options)
         .then(response => response.json())
         .then(response => response.cast.length > 0 ? setActorsData(response.cast) : setActorsData(null))
         .catch(err => console.error(err));
-    }, [castId]);
+    }, [productId]);
   
     return (
       <div>
