@@ -7,7 +7,7 @@ export const Movies = () => {
   const [films, setFilms] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const name = searchParams.get("name");
-
+console.log(name)
 
 const funcInput = (evt) => {
   setSearch(evt.target.value);
