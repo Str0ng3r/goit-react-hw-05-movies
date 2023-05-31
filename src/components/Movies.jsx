@@ -1,10 +1,20 @@
 import React, { useState } from 'react';
-import { Link} from 'react-router-dom';
+import { Link,useSearchParams} from 'react-router-dom';
 import styled from './styled.module.css';
 
 export const Movies = () => {
   const [search, setSearch] = useState('');
   const [films, setFilms] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const name = searchParams.get("name");
+
+
+const funcInput = (evt) => {
+  setSearch(evt.target.value);
+}
+
+
+
   const options = {
     method: 'GET',
     headers: {
@@ -15,6 +25,7 @@ export const Movies = () => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    setSearchParams({ name: search})
     fetch(
       `https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=en-US&page=1`,
       options
@@ -32,7 +43,7 @@ export const Movies = () => {
             className={styled.input}
             type="text"
             value={search}
-            onChange={(evt) => setSearch(evt.target.value)}
+            onChange={funcInput}
           />
           <button type="submit">Search</button>
         </form>
