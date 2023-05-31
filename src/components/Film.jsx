@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link,  useNavigate} from 'react-router-dom';
 import { Outlet } from "react-router-dom";
 import styled from './styled.module.css'
 
- const Film = () => {
-  const { productId } = useParams();
+const Film = () => {
+  const { movieId } = useParams();
   const [infoFilm, setInfoFilm] = useState(null);
-
+const navigate = useNavigate()
   useEffect(() => {
     const options = {
       method: 'GET',
@@ -16,22 +16,27 @@ import styled from './styled.module.css'
       }
     };
 
-    fetch(`https://api.themoviedb.org/3/movie/${productId}?language=en-US`, options)
+    fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=en-US`, options)
       .then(response => response.json())
       .then(response => setInfoFilm(response))
       .catch(err => console.error(err));
-  }, [productId]);
+  }, [movieId]);
+
+
+const backButton = () => {
+  navigate('/')
+}
+
 
   return (
     infoFilm && (
       <div className={styled.containerWrapFilm}>
-        <div
-className={styled.containerFilm}
-        >
+        <div className={styled.containerFilm}>
+          <button onClick={backButton}>BACK</button>
           <img
             src={`https://image.tmdb.org/t/p/w400${infoFilm.backdrop_path}`}
             alt="img-film"
-           className={styled.imgFilm}
+            className={styled.imgFilm}
           />
           <div>
             <h1>{infoFilm.original_title}</h1>
@@ -39,18 +44,17 @@ className={styled.containerFilm}
             <h2>Overview</h2>
             <p>{infoFilm.overview}</p>
             <h3>Genres</h3>
-            <p>
-              {infoFilm.genres.map(genre => genre.name).join(', ')}
-            </p>
+            <p>{infoFilm.genres.map(genre => genre.name).join(', ')}</p>
           </div>
         </div>
         <footer style={{ display: 'flex', justifyContent: 'center' }}>
-        <Link to={`/movies/${productId}/reviews`}>Reviews</Link>
-          <Link to={`/movies/${productId}/cast`}>Actors</Link>
+          <Link className={styled.headerLink} to={`/movies/${movieId}/reviews`}>Reviews</Link>
+          <Link className={styled.headerLink} to={`/movies/${movieId}/cast`}>Actors</Link>
         </footer>
-        <Outlet/>
+        <Outlet />
       </div>
     )
   );
 };
-export default Film
+
+export default Film;
