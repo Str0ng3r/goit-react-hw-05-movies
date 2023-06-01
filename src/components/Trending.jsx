@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useLocation} from 'react-router-dom';
+
 import styled from './styled.module.css'
 export const Trending = () => {
+  const location = useLocation()
   const [films, setFilms] = useState(null);
 
   useEffect(() => {
@@ -27,7 +29,7 @@ export const Trending = () => {
       {films &&
   films.map(item => (
     <li key={item.id}>
-      <Link to={`/movies/${item.id}`}>
+      <Link to={`/movies/${item.id}`} state={{from:location}}> 
   {item.original_title}
 </Link>
     </li>

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link,  useNavigate} from 'react-router-dom';
+import { useParams, Link,useLocation} from 'react-router-dom';
 import { Outlet } from "react-router-dom";
 import styled from './styled.module.css'
 
 const Film = () => {
+  const location = useLocation()
   const { movieId } = useParams();
   const [infoFilm, setInfoFilm] = useState(null);
-const navigate = useNavigate()
   useEffect(() => {
     const options = {
       method: 'GET',
@@ -23,16 +23,13 @@ const navigate = useNavigate()
   }, [movieId]);
 
 
-const backButton = () => {
-  navigate('/')
-}
 
 
   return (
     infoFilm && (
       <div className={styled.containerWrapFilm}>
         <div className={styled.containerFilm}>
-          <button onClick={backButton}>BACK</button>
+          <Link to={location.state.from}>BACK</Link>
           <img
             src={`https://image.tmdb.org/t/p/w400${infoFilm.backdrop_path}`}
             alt="img-film"
