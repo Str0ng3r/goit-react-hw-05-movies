@@ -29,7 +29,7 @@ const Film = () => {
     infoFilm && (
       <div className={styled.containerWrapFilm}>
         <div className={styled.containerFilm}>
-          <Link to={location.state.from}>BACK</Link>
+        <Link to={location?.state?.from || '/'}>BACK</Link>
           <img
             src={`https://image.tmdb.org/t/p/w400${infoFilm.backdrop_path}`}
             alt="img-film"
