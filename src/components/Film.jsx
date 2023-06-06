@@ -45,8 +45,8 @@ const Film = () => {
           </div>
         </div>
         <footer style={{ display: 'flex', justifyContent: 'center' }}>
-          <Link className={styled.headerLink} to={`/movies/${movieId}/reviews`}>Reviews</Link>
-          <Link className={styled.headerLink} to={`/movies/${movieId}/cast`}>Actors</Link>
+          <Link className={styled.headerLink} to={`/movies/${movieId}/reviews`} state={{ from: location?.state?.from || '/' }}>Reviews</Link>
+          <Link className={styled.headerLink} to={`/movies/${movieId}/cast`} state={{ from: location?.state?.from || '/' }}>Actors</Link>
         </footer>
         <Outlet />
       </div>
